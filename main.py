@@ -1,14 +1,18 @@
 # saved_list = ["what", "test", "conf"]
 cached_list = []
-local_changes = []
 
-#INFO: 2025-09-04 stopped at realizing my local_chages thing breaks due to the fact of removing items
+#INFO: OMG I can just overwrite the file which fixes all my problems, however
+#this is very irresponsible and dangerous
+
+#TODO: Show menu again after making a choice
+#TODO: Need error handling if an a wrong choice is made in the menu()
+#TODO: Ability to grep the list, os.thing(grep)? or `is in`?
+#TODO: Type string (dumb fuzzy, show ambiguous if not enough) or input index to remove
 
 with open("cache", "r") as cache:
     cache = cache.readlines()
     for line in cache:
-        print(line, sep="", end="")
-        #INFO: No idea what more it strips
+        # print(line, sep="", end="")
         cached_list.append(line.strip())
 
 def writeCache(*args):
@@ -38,8 +42,8 @@ def menu():
         return
 
 def ask_add_item():
-    local_changes.append(input("type item to add"))
-    writeCache(input("type item to add"))
+    # writeCache(input("type item to add"))
+    cached_list.append(input("type item to add"))
     print("item added")
 
 def ask_update_item():
@@ -61,6 +65,6 @@ def ask_remove():
 menu()
 
 #FIX: just duplicates everything
-# with open("cache", "a") as f:
-#     for item in cached_list:
-#         f.write(f"{item}\n")
+with open("cache", "w") as f:
+    for item in cached_list:
+        f.write(f"{item}\n")
