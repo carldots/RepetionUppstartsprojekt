@@ -1,14 +1,12 @@
-my_list = ["what", "test", "conf"]
+# my_list = ["what", "test", "conf"]
+my_list = []
 
-
-#FIX: casting whatever read() returns to an actual list since indexing does not work
-
-# with open("cache") as f:
-#     global my_list
-#     my_list = f.read()
-#
-# print(my_list, sep="", end="")
-# print(my_list[3])
+with open("cache", "r") as cache:
+    cache = cache.readlines()
+    for line in cache:
+        print(line, sep="", end="")
+        #INFO: No idea what more it strips
+        my_list.append(line.strip())
 
 user_input = input("""
 1. Add item
@@ -67,4 +65,5 @@ def ask_remove():
 menu()
 
 with open("cache", "a") as f:
-    f.write(f"{my_list}")
+    for item in my_list:
+        f.write(item)
