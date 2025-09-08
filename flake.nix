@@ -25,12 +25,6 @@
         pkgs.nix-direnv
         # Pulling Python modules/libraries
         (pkgs.python3.withPackages (python-pkgs: [
-          # Fetching from API
-          python-pkgs.requests
-          # For managing API key auth
-          python-pkgs.python-dotenv
-          # Is crucial for the script to work, not sure
-          python-pkgs.dbus-python
           python-pkgs.colorama
         ]))
       ];
