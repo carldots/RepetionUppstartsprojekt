@@ -31,6 +31,7 @@
           python-pkgs.python-dotenv
           # Is crucial for the script to work, not sure
           python-pkgs.dbus-python
+          python-pkgs.colorama
         ]))
       ];
     };
